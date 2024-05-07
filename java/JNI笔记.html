@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Java JNI笔记 | Longqinx&#39;s Notes</title>
+    <meta name="generator" content="VuePress 1.9.10">
+    
+    <meta name="description" content="Just playing around">
+    
+    <link rel="preload" href="/assets/css/0.styles.9f84806b.css" as="style"><link rel="preload" href="/assets/js/app.80bf8062.js" as="script"><link rel="preload" href="/assets/js/2.0c4bddf9.js" as="script"><link rel="preload" href="/assets/js/1.50b457b8.js" as="script"><link rel="preload" href="/assets/js/27.e117ae25.js" as="script"><link rel="prefetch" href="/assets/js/10.325b9f09.js"><link rel="prefetch" href="/assets/js/11.845e3692.js"><link rel="prefetch" href="/assets/js/12.ecdb524b.js"><link rel="prefetch" href="/assets/js/13.3f3f6a36.js"><link rel="prefetch" href="/assets/js/14.eb7a3d07.js"><link rel="prefetch" href="/assets/js/15.b60f3925.js"><link rel="prefetch" href="/assets/js/16.85253907.js"><link rel="prefetch" href="/assets/js/17.c2838453.js"><link rel="prefetch" href="/assets/js/18.3256f17f.js"><link rel="prefetch" href="/assets/js/19.d8afd0ae.js"><link rel="prefetch" href="/assets/js/20.10e47ab9.js"><link rel="prefetch" href="/assets/js/21.33b300c9.js"><link rel="prefetch" href="/assets/js/22.271589f5.js"><link rel="prefetch" href="/assets/js/23.c4452db2.js"><link rel="prefetch" href="/assets/js/24.176c15d5.js"><link rel="prefetch" href="/assets/js/25.566051ae.js"><link rel="prefetch" href="/assets/js/26.adb32047.js"><link rel="prefetch" href="/assets/js/28.8b31e99c.js"><link rel="prefetch" href="/assets/js/29.577fa04a.js"><link rel="prefetch" href="/assets/js/3.af33e5d6.js"><link rel="prefetch" href="/assets/js/30.7dc4f8a5.js"><link rel="prefetch" href="/assets/js/31.b01a7a78.js"><link rel="prefetch" href="/assets/js/32.e3117515.js"><link rel="prefetch" href="/assets/js/33.47c58abe.js"><link rel="prefetch" href="/assets/js/34.4fe20b46.js"><link rel="prefetch" href="/assets/js/35.f1925386.js"><link rel="prefetch" href="/assets/js/36.0032150c.js"><link rel="prefetch" href="/assets/js/37.05360e4a.js"><link rel="prefetch" href="/assets/js/4.45665f8a.js"><link rel="prefetch" href="/assets/js/5.7098d77a.js"><link rel="prefetch" href="/assets/js/6.0c0a0f39.js"><link rel="prefetch" href="/assets/js/7.6a854e57.js"><link rel="prefetch" href="/assets/js/vendors~docsearch.77260563.js">
+    <link rel="stylesheet" href="/assets/css/0.styles.9f84806b.css">
+  </head>
+  <body>
+    <div id="app" data-server-rendered="true"><div class="theme-container"><header class="navbar"><div class="sidebar-button"><svg xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" viewBox="0 0 448 512" class="icon"><path fill="currentColor" d="M436 124H12c-6.627 0-12-5.373-12-12V80c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12zm0 160H12c-6.627 0-12-5.373-12-12v-32c0-6.627 5.373-12 12-12h424c6.627 0 12 5.373 12 12v32c0 6.627-5.373 12-12 12z"></path></svg></div> <a href="/" class="home-link router-link-active"><img src="/logo.png" alt="Longqinx's Notes" class="logo"> <span class="site-name can-hide">Longqinx's Notes</span></a> <div class="links"><div class="search-box"><input aria-label="Search" autocomplete="off" spellcheck="false" value=""> <!----></div> <nav class="nav-links can-hide"><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  Java
+</a></div><div class="nav-item"><a href="/c++/" class="nav-link">
+  C/C++
+</a></div><div class="nav-item"><a href="/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/dsa/" class="nav-link">
+  数据结构与算法
+</a></div><div class="nav-item"><a href="/project/" class="nav-link">
+  我的小项目
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="关于" class="dropdown-title"><span class="title">关于</span> <span class="arrow down"></span></button> <button type="button" aria-label="关于" class="mobile-dropdown-title"><span class="title">关于</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/about/contactMe.html" class="nav-link">
+  联系我
+</a></li></ul></div></div> <!----></nav></div></header> <div class="sidebar-mask"></div> <aside class="sidebar"><nav class="nav-links"><div class="nav-item"><a href="/java/" class="nav-link router-link-active">
+  Java
+</a></div><div class="nav-item"><a href="/c++/" class="nav-link">
+  C/C++
+</a></div><div class="nav-item"><a href="/linux/" class="nav-link">
+  Linux
+</a></div><div class="nav-item"><a href="/dsa/" class="nav-link">
+  数据结构与算法
+</a></div><div class="nav-item"><a href="/project/" class="nav-link">
+  我的小项目
+</a></div><div class="nav-item"><div class="dropdown-wrapper"><button type="button" aria-label="关于" class="dropdown-title"><span class="title">关于</span> <span class="arrow down"></span></button> <button type="button" aria-label="关于" class="mobile-dropdown-title"><span class="title">关于</span> <span class="arrow right"></span></button> <ul class="nav-dropdown" style="display:none;"><li class="dropdown-item"><!----> <a href="/about/contactMe.html" class="nav-link">
+  联系我
+</a></li></ul></div></div> <!----></nav>  <ul class="sidebar-links"><li><section class="sidebar-group depth-0"><p class="sidebar-heading open"><span>Java JNI笔记</span> <!----></p> <ul class="sidebar-links sidebar-group-items"><li><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#简介" class="sidebar-link">简介</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#何时需要jni" class="sidebar-link">何时需要JNI?</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#jni能实现的功能" class="sidebar-link">JNI能实现的功能</a></li></ul></li><li><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#设计概述" class="sidebar-link">设计概述</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#jni接口函数和指针" class="sidebar-link">JNI接口函数和指针</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#编译、加载和链接本地方法" class="sidebar-link">编译、加载和链接本地方法</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#解析本地方法名" class="sidebar-link">解析本地方法名</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#本地方法参数" class="sidebar-link">本地方法参数</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#引用java对象" class="sidebar-link">引用Java对象</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#访问java对象" class="sidebar-link">访问Java对象</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#报告程序错误" class="sidebar-link">报告程序错误</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#java异常" class="sidebar-link">Java异常</a></li></ul></li><li><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#jni类型和数据结构" class="sidebar-link">JNI类型和数据结构</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#原始类型-primitive-types" class="sidebar-link">原始类型(primitive types)</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#引用类型-reference-types" class="sidebar-link">引用类型(reference types)</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#字段-field-和方法-method-id" class="sidebar-link">字段(Field)和方法(Method)ID</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#值类型" class="sidebar-link">值类型</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#类型签名" class="sidebar-link">类型签名</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#修改的utf-8字符串" class="sidebar-link">修改的UTF-8字符串</a></li></ul></li><li><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#jni函数" class="sidebar-link">JNI函数</a><ul class="sidebar-sub-headers"><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#接口函数表" class="sidebar-link">接口函数表</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#版本信息" class="sidebar-link">版本信息</a></li><li class="sidebar-sub-header"><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#类操作" class="sidebar-link">类操作</a></li></ul></li><li><a href="/java/JNI%E7%AC%94%E8%AE%B0.html#vs2019-idea下jni项目整合" class="sidebar-link">VS2019+IDEA下JNI项目整合</a><ul class="sidebar-sub-headers"></ul></li></ul></section></li></ul> </aside> <main class="page"> <div class="theme-default-content content__default"><h1 id="java-jni笔记"><a href="#java-jni笔记" class="header-anchor">#</a> Java JNI笔记</h1> <h2 id="简介"><a href="#简介" class="header-anchor">#</a> 简介</h2> <ul><li>JNI，即Java Native Interface。是Java提供的支持本地方法的接口。该接口提供了让Java调用C/C++等代码的途径</li></ul> <h3 id="何时需要jni"><a href="#何时需要jni" class="header-anchor">#</a> 何时需要JNI?</h3> <ul><li>需要使用JNI的情况
+<ul><li>应用使用到了Java标准库不支持的依赖于平台的特性</li> <li>已经有用其他语言写好的库，希望通过JNI来调用</li> <li>希望用低级语言(如汇编)实现一小部分对时间要求高的关键代码</li></ul></li></ul> <h3 id="jni能实现的功能"><a href="#jni能实现的功能" class="header-anchor">#</a> JNI能实现的功能</h3> <ul><li>使用JNI编程，可使用本地方法来：
+<ul><li>创建、检查和更新Java对象（包括数组和字符串）</li> <li>调用Java方法</li> <li>捕获和抛出异常</li> <li>加载类和获得类的信息</li> <li>执行运行时类型检查</li></ul></li> <li>也可将JNI与调用API(Invocation API)一起使用，来支持任意本地应用(native application)嵌入到Java虚拟机中</li></ul> <h2 id="设计概述"><a href="#设计概述" class="header-anchor">#</a> 设计概述</h2> <h3 id="jni接口函数和指针"><a href="#jni接口函数和指针" class="header-anchor">#</a> JNI接口函数和指针</h3> <ul><li><p>本机代码通过JNI函数来使用Java虚拟机得特性。JNI函数可通过<strong>接口指针(Interface Pointer)得到，接口指针是指针的指针，该指针指向一个指针数组，而数组中的每个指针指向一个</strong>接口函数(Interface Function)</p> <p><img src="/jni-pic/1.gif" alt="designa.gif"></p></li> <li><p>JNI接口像C++虚函数表或COM接口一样被组织起来。使用接口表而不是硬链接(hard-wired)函数入口的优势在于，JNI的命名空间会因此与本地代码独立。虚拟机能容易地提供多版本的JNI函数表</p></li> <li><p>JNI接口指针仅在当前线程有效，因此，一个本地方法不应该将接口指针从一个线程传递到另一个线程</p></li> <li><p>本地方法接收一个JNI接口指针作为参数，虚拟机会保证在同一个Java线程多次调用某个本地方法时传递相同的接口指针；但一个本地方法可能在多个线程中调用，因此可能会接收到不同的接口指针</p></li></ul> <h3 id="编译、加载和链接本地方法"><a href="#编译、加载和链接本地方法" class="header-anchor">#</a> 编译、加载和链接本地方法</h3> <ul><li><p>因为虚拟机时多线程的，所以本地库也应该使用支持多线程的本地编译器编译和链接</p></li> <li><p>本地方法使用<code>System.loadLibrary()</code>方法进行加载，如</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">pkg</span><span class="token punctuation">;</span>
+
+<span class="token class-name">Class</span> <span class="token class-name">Test</span><span class="token punctuation">{</span>
+    <span class="token keyword">native</span> <span class="token keyword">double</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span><span class="token class-name">String</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">static</span><span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">loadLibrary</span><span class="token punctuation">(</span><span class="token string">&quot;pkg_Test&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>开发者可以使用一个库来存储任意数量的类所需要的所有本机方法，只要用相同的类加载器加载这些类即可。VM内部为每个类加载器维护一个已加载的本机库列表</p></li> <li><p>本机库可以与虚拟机静态链接</p></li> <li><p>当且仅当库导出名为<code>JNI_OnLoad_L</code>的函数时，将其映像与VM结合的库L定义为静态链接</p></li> <li><p>一个静态链接库<code>L</code>导出一个叫<code>JIN_OnLoad_L</code>和一个叫<code>JNI_OnLoad</code>的函数时，<code>JNI_OnLoad</code>函数会被忽略</p></li> <li><p>库<code>L</code>被静态链接，然后当第一次调用<code>System.loadLibrary(&quot;L&quot;)</code>时，一个<code>JNI_OnLoad_L</code>函数会被调用，并且接受和返回与<code>JNI_OnLoad</code>一样的参数和返回值</p></li> <li><p>静态链接的库<code>L</code>会阻止同名的库进行动态加载</p></li> <li><p>当静态链接的库<code>L</code>被垃圾回收时，VM会调用该库导出的名叫<code>JNI_OnUnLoad_L</code>的函数</p></li> <li><p>开发者可调用JNI函数<code>RegisterNatives()</code>来注册与类相关的本地方法</p></li></ul> <h3 id="解析本地方法名"><a href="#解析本地方法名" class="header-anchor">#</a> 解析本地方法名</h3> <ul><li><p>动态链接器通过名字解析其入口。本地方法名由下述部分构成：</p> <ul><li><code>Java_</code>前缀</li> <li>一个符号修饰(mangled)的全限定类名</li> <li>一个下划线分隔符(<code>_</code>)</li> <li>一个符号修饰的方法名</li> <li>对于重载的本地方法，两个下划线(<code>__</code>)后跟符号修饰的参数签名</li></ul></li> <li><p>VM检查方法名称是否与驻留在本机库中的方法相匹配；VM首先查找短名称，即没有参数签名的名称，然后查找长名称，即带有参数签名的名称。只有当一个本机方法被另一个本机方法重载时，开发者才需要使用长名称。但是，本机方法与非本地方法可以具有相同的名称，因为非本机方法(Java方法)不驻留在本地库中</p></li> <li><p>JNI采用了一个简单的名称修饰(name-mangling)方案，以确保所有Unicode字符都转换为有效的C函数名。并使用下划线(<code>_</code>)代替全限定类名中的斜线(<code>/</code>)</p></li> <li><p>因为一个名字或类型描述符不可能以数字开头，因此，使用<code>_0、...、_9</code>作为转义序列：</p> <table><thead><tr><th>转义序列</th> <th>含义</th></tr></thead> <tbody><tr><td>_0xxxx</td> <td>表示一个Unicode字符XXXX。注意：小写字符用于表示非ASCII码字符，如_0abcd而不是_0ABCD</td></tr> <tr><td>_1</td> <td>表示字符<code>_</code></td></tr> <tr><td>_2</td> <td>表示签名中的<code>;</code>字符</td></tr> <tr><td>_3</td> <td>表示签名中的<code>[</code>字符</td></tr></tbody></table></li></ul> <h3 id="本地方法参数"><a href="#本地方法参数" class="header-anchor">#</a> 本地方法参数</h3> <ul><li><p>JNI接口指针是本地方法的第一个参数，其类型为<code>JNIEnv</code>。第二个参数根据本地方法是否是静态方法决定，对于非静态方法，第二参数是对象的引用；对于静态方法，第二参数是其Java类的引用</p></li> <li><p>剩余的参数对应于普通Java方法的参数。本地方法调用通过其返回值像调用它的程序返回结果</p></li> <li><p>使用C函数实现Java本地方法示例：</p> <ul><li><p>Java中本地方法定义</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">pkg</span><span class="token punctuation">;</span>
+
+<span class="token keyword">class</span> <span class="token class-name">Cls</span><span class="token punctuation">{</span>
+    <span class="token keyword">native</span> <span class="token keyword">double</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span> i<span class="token punctuation">,</span><span class="token class-name">String</span> s<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token comment">//...</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>长别名为<code>Java_pkg_Cls_f_ILjava_lang_String_2</code>的C函数实现了本地方法<code>f</code></p> <div class="language-c extra-class"><pre class="language-c"><code>jdouble <span class="token function">Java_pkg_Cls_f__ILjava_lang_String_2</span> <span class="token punctuation">(</span>
+    JNIEnv <span class="token operator">*</span>env<span class="token punctuation">,</span>        <span class="token comment">/* 接口指针*/</span>
+    jobject obj<span class="token punctuation">,</span>        <span class="token comment">/* &quot;this&quot; 指针 */</span>
+    jint i<span class="token punctuation">,</span>             <span class="token comment">/* 参数1 */</span>
+    jstring s<span class="token punctuation">)</span>          <span class="token comment">/* 参数2 */</span>
+<span class="token punctuation">{</span>
+    <span class="token comment">/* 获取Java String的一份C拷贝 */</span>
+    <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span>str <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token operator">*</span>env<span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">GetStringUTFChars</span><span class="token punctuation">(</span>env<span class="token punctuation">,</span> s<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token comment">/* 处理字符串 */</span>
+    <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+
+    <span class="token comment">/* 释放字符串 */</span>
+    <span class="token punctuation">(</span><span class="token operator">*</span>env<span class="token punctuation">)</span><span class="token operator">-&gt;</span><span class="token function">ReleaseStringUTFChars</span><span class="token punctuation">(</span>env<span class="token punctuation">,</span> s<span class="token punctuation">,</span> str<span class="token punctuation">)</span><span class="token punctuation">;</span>
+
+    <span class="token keyword">return</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li></ul></li> <li><p>注意：总是使用接口指针env来操作Java对象</p></li> <li><p>使用C++时，可得到稍微整洁的代码：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>extern &quot;C&quot; /* 使用C调用约定 */ 
+
+jdouble Java_pkg_Cls_f__ILjava_lang_String_2 (
+
+    JNIEnv *env,        /* 接口指针 */
+    jobject obj,        /* &quot;this&quot; 指针 */
+    jint i,             /* 参数 #1 */
+    jstring s)          /* 参数 #2 */
+
+{
+    // C++中不再需要额外的 (*env) 解引用
+    const char *str = env-&gt;GetStringUTFChars(s, 0);
+
+    // ...
+
+    env-&gt;ReleaseStringUTFChars(s, str);
+
+    // return ...
+}
+</code></pre></div></li></ul> <h3 id="引用java对象"><a href="#引用java对象" class="header-anchor">#</a> 引用Java对象</h3> <ul><li>原始类型如int、char等在Java传递到本地方法的过程中是按值传递的，而任意的Java对象都是按引用传递的。VM必须跟踪已传递给本机代码的所有对象，以便垃圾收集器不会释放这些对象。反过来，本机代码必须有一种方式通知VM它不再需要这些对象；此外，垃圾收集器必须能够移动本机代码引用的对象</li> <li><strong>全局和局部引用</strong> <ul><li>JNI把本地代码使用的对象引用分为两种：局部(local)和全局(global)引用。局部引用在本地代码执行期间使用，本地代码返回后会自动释放；全局引用在其被显式释放之前都可用</li> <li>对象以局部引用的方式传递个本地方法(native method)，所有JNI函数返回的Java对象都是局部引用。JNI允许开发者从局部引用创建全局引用。接收Java对象作为参数的JNI函数可接收全局或局部引用。一个本地方法可返回一个全局或局部引用给VM</li> <li>在大多数情况下，开发者应该依赖VM在本地方法返回后释放所有局部引用，但在下述情况下开发者应该显式释放：
+<ul><li>本地方法访问一个大Java对象，因而创建一个该Java对象的局部引用。然后本地方法在返回给调用者之前执行了一些计算，此时局部引用会阻止对象被垃圾回收器回收，尽管这个对象在后续的计算中已经没有作用</li> <li>本地方法创建大量的局部引用，尽管它们不会同时被使用。因为VM需要一些空间来跟踪局部引用，创建大量的局部引用可能导致系统耗尽内存资源。例如，一个本地方法在一个很大的对象数组上执行循环，获取元素作为局部引用，在每轮迭代时处理一个对象。在每轮循环后，开发者就不再需要该引用</li></ul></li> <li>JNI允许开发者在本地代码中的任意时候释放一个局部引用。为了确保开发者可以手动释放局部引用，JNI函数不允许创建额外的局部引用，除了它们作为结果返回的引用</li> <li>局部引用仅在创建它们的线程中有效。本地代码不能将局部引用从一个线程传递到另一个线程</li></ul></li></ul> <h3 id="访问java对象"><a href="#访问java对象" class="header-anchor">#</a> 访问Java对象</h3> <ul><li><p>JNI在全局和局部引用上提供了很多访问器函数，这是JNI能够被各种VM实现支持的一个关键原因</p></li> <li><p>通过不透明引用使用访问器函数的开销要高于直接访问C数据结构的开销</p></li> <li><p><strong>访问原始数组(primitive array)</strong></p> <ul><li>对于包含许多基本数据类型(如整数数组和字符串)的大型Java对象，这种开销是不可接受的</li> <li>遍历Java数组并使用函数调用检索每个元素的效率非常低</li> <li>一种解决方案引入了**固定(pinning)**的概念，以便本地方法可以要求VM 固定数组的内容，然后本地方法接收一个指向元素的直接指针。这种方式有两种隐含要求：
+<ul><li>垃圾回收器必须要支持pinning</li> <li>VM必须将原始数组在内存中连续存储。虽然这是这是多数数组的自然实现方式，但对于布尔数组，其可能被打包或者解包，因此依赖于布尔数组精确布局的本地代码是不可移植的</li></ul></li> <li>JNI采取了折衷的办法克服上述问题</li> <li>首先，提供了一组函数，用于在Java数组段和本机内存缓冲区之间复制原始数组元素,如果本机方法只需要访问一个大数组中的少量元素，则使用这些函数</li> <li>其次，开发者可以使用另一组函数来检索数组元素的pinning版本，需注意，这些功能可能需要Java VM执行存储分配和复制。这些函数是否复制数组取决于虚拟机的实现：
+<ul><li>如果垃圾收集器支持pinning，并且数组的布局与本机方法所期望的相同，则不需要复制</li> <li>否则，数组被复制到一个不可移动的内存块(例如，在C堆中)，然后执行必要的格式转换。返回复制后的指针</li></ul></li> <li>最后，接口提供了通知VM本地代码不再需要访问数组元素的函数。当调用这些函数时，系统要么解除数组的固定pinning，要么让原始数组与副本保持一致后释放副本</li></ul></li> <li><p><strong>访问字段和方法</strong></p> <ul><li><p>JNI允许本地方法访问Java对象的字段和调用Java方法。JNI通过符号名和类型签名来表示一个方法或字段</p></li> <li><p>一个两个步骤的过程表明了通过名字和签名定位字段或方法的开销。如，调用类<code>cls</code>中的方法<code>f</code>，本地代码首先获取方法ID：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>jmethodID mid=env-&gt;GetMethodID(cls,&quot;f&quot;,&quot;(ILjava/lang/String;)D&quot;);
+</code></pre></div></li> <li><p>接着本地代码可没有查找开销地使用方法ID：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>jdouble result=env-&gt;CallDoubleMethod(obj,mid,10,str);
+</code></pre></div></li> <li><p>字段或方法ID不会阻止虚拟机卸载派生出ID的类，卸载类后，方法或字段ID将无效。因此若打算在一段时间内使用一个方法或字段ID，本地代码需要保证：</p> <ul><li>保持对底层类的动态引用</li> <li>或重新计算方法或字段ID</li></ul></li></ul></li></ul> <h3 id="报告程序错误"><a href="#报告程序错误" class="header-anchor">#</a> 报告程序错误</h3> <ul><li>JNI并不检查如传递空指针或非法参数之类的错误，</li></ul> <h3 id="java异常"><a href="#java异常" class="header-anchor">#</a> Java异常</h3> <ul><li><p>JNI允许本地代码抛出任意的Java异常，本地代码也可能处理一些突出的Java异常，未处理的Java异常会传播回JVM</p></li> <li><p><strong>异常和错误代码</strong></p> <ul><li>某些JNI函数使用Java异常机制报告错误情况，多数情况下，JNI函数通过返回一个错误代码或抛出Java异常来报告错误。错误代码通常是一个特殊的返回值（如NULL），因此，程序可：
+<ul><li>快速地检查最近JNI函数调用的返回值来判断是否有错误发生</li> <li>并且调用<code>ExceptionOccurred()</code>函数来获取包含该错误的详细描述的异常对象</li></ul></li> <li>在两种情况下，开发者需要检查异常而不能首先检查错误代码：
+<ul><li>调用Java方法的JNI函数返回Java方法的结果，开发者必须调用<code>ExceptionOccurred()</code>来检查在Java方法执行期间可能发生的异常</li> <li>一些JNI数组访问函数不返回错误代码，但可能抛出<code>ArrayIndexOutOfBoundsException</code>或<code>ArrayStoreException</code></li></ul></li></ul></li> <li><p><strong>异步异常</strong></p> <ul><li>在多个线程的情况下，当前线程以外的线程可能会产生异步异常。异步异常不会立即影响当前线程中本机代码的执行，直到：
+<ul><li>本地代码调用一个可能引发异步异常的JNI函数</li> <li>或本地代码使用<code>ExceptionOccurred()</code>显式检查同步和异步异常</li></ul></li> <li>本地方法应该在必要的地方插入<code>ExceptionOccurred()</code>检查(例如在没有其他异常检查的紧凑循环中)，以确保当前线程在合理的时间内响应异步异常</li></ul></li> <li><p><strong>异常处理</strong></p> <ul><li><p>在本地代码中有两种处理异常的方式：</p> <ul><li>本地方法可以选择立即返回，使得在调用本地方法的Java代码中抛出异常</li> <li>本地代码可以使用<code>ExceptionClear()</code>清除异常，并执行其自己的异常处理代码</li></ul></li> <li><p>在引发异常之后，本地代码必须首先清除异常，然后才能进行其他JNI调用。当存在挂起的异常时，可以安全调用的JNI函数是：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>ExceptionOccurred()
+ExceptionDescribe()
+ExceptionClear()
+ExceptionCheck()
+ReleaseStringChars()
+ReleaseStringUTFChars()
+ReleaseStringCritical()
+Release&lt;Type&gt;ArrayElements()
+ReleasePrimitiveArrayCritical()
+DeleteLocalRef()
+DeleteGlobalRef()
+DeleteWeakGlobalRef()
+MonitorExit()
+PushLocalFrame()
+PopLocalFrame()
+</code></pre></div></li></ul></li></ul> <h2 id="jni类型和数据结构"><a href="#jni类型和数据结构" class="header-anchor">#</a> JNI类型和数据结构</h2> <h3 id="原始类型-primitive-types"><a href="#原始类型-primitive-types" class="header-anchor">#</a> 原始类型(primitive types)</h3> <ul><li><p>对应关系表</p> <table><thead><tr><th>Java类型</th> <th>Native类型</th> <th>描述</th></tr></thead> <tbody><tr><td>boolean</td> <td>jboolean</td> <td>无符号8位</td></tr> <tr><td>byte</td> <td>jbyte</td> <td>有符号8位</td></tr> <tr><td>char</td> <td>jchar</td> <td>无符号16位</td></tr> <tr><td>short</td> <td>jshort</td> <td>有符号16位</td></tr> <tr><td>int</td> <td>jint</td> <td>有符号32位</td></tr> <tr><td>long</td> <td>jlong</td> <td>有符号64位</td></tr> <tr><td>float</td> <td>jfloat</td> <td>32位</td></tr> <tr><td>double</td> <td>jdouble</td> <td>64位</td></tr> <tr><td>void</td> <td>void</td> <td>void</td></tr></tbody></table></li> <li><p>下述定义是出于方便</p> <div class="language-c++ extra-class"><pre class="language-text"><code>#define JNI_TRUE 1
+#define JNI_FALSE 0
+</code></pre></div></li> <li><p><code>jsize</code>整数类型用于描述下标或大小</p> <div class="language-c++ extra-class"><pre class="language-text"><code>typedef jint jsize;
+</code></pre></div></li></ul> <h3 id="引用类型-reference-types"><a href="#引用类型-reference-types" class="header-anchor">#</a> 引用类型(reference types)</h3> <ul><li><p>JNI包含许多对应于不同类型Java对象的引用类型。JNI引用类型按以下层次组织：</p> <ul><li>jobject
+<ul><li><code>jclass</code>(java.lang.Class)</li> <li><code>jstring</code>(java.lang.String)</li> <li>jarray(数组)
+<ul><li><code>jobjectArray</code>对象数组</li> <li><code>jbooleanArray</code>布尔数组</li> <li><code>jbyteArray</code>byte数组</li> <li><code>jcharArray</code>char数组</li> <li><code>jshortArray</code> short数组</li> <li><code>jintArray</code>int数组</li> <li><code>jlongArray</code> long数组</li> <li><code>jfloatArray</code> float数组</li> <li><code>jdoubleArray</code> double数组</li></ul></li> <li><code>jthrowable</code>(java.lang.Throwable)</li></ul></li></ul></li> <li><p>在 C 中，其他所有JNI引用类型都定义为与jobject相同，如</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">typedef</span> jobject jclass<span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>在 C++ 中，JNI引入了一组虚拟类来加强子类型关系。如</p> <div class="language-c++ extra-class"><pre class="language-text"><code>class _jobject {};
+class _jclass : public _jobject {};
+// ...
+typedef _jobject *jobject;
+typedef _jclass *jclass;
+</code></pre></div></li></ul> <h3 id="字段-field-和方法-method-id"><a href="#字段-field-和方法-method-id" class="header-anchor">#</a> 字段(Field)和方法(Method)ID</h3> <ul><li><p>字段和方法ID是常规的 C 指针类型：</p> <div class="language-c extra-class"><pre class="language-c"><code><span class="token keyword">struct</span> <span class="token class-name">_jfieldID</span><span class="token punctuation">;</span>              <span class="token comment">/* 不透明结构 */</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_jfieldID</span> <span class="token operator">*</span>jfieldID<span class="token punctuation">;</span>   <span class="token comment">/* 字段ID */</span>
+
+<span class="token keyword">struct</span> <span class="token class-name">_jmethodID</span><span class="token punctuation">;</span>              <span class="token comment">/* 不透明结构 */</span>
+<span class="token keyword">typedef</span> <span class="token keyword">struct</span> <span class="token class-name">_jmethodID</span> <span class="token operator">*</span>jmethodID<span class="token punctuation">;</span> <span class="token comment">/* 方法ID */</span>
+</code></pre></div></li></ul> <h3 id="值类型"><a href="#值类型" class="header-anchor">#</a> 值类型</h3> <ul><li><p><code>jvalue</code>联合类型被用作参数数组中的元素类型，定义为：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>typedef union jvalue {
+    jboolean z;
+    jbyte    b;
+    jchar    c;
+    jshort   s;
+    jint     i;
+    jlong    j;
+    jfloat   f;
+    jdouble  d;
+    jobject  l;
+} jvalue;
+</code></pre></div></li></ul> <h3 id="类型签名"><a href="#类型签名" class="header-anchor">#</a> 类型签名</h3> <ul><li><p>JNI使用JVM的类型签名表示法，见下类型签名表</p> <table><thead><tr><th>类型签名</th> <th>对应Java类型</th></tr></thead> <tbody><tr><td>Z</td> <td>boolean</td></tr> <tr><td>B</td> <td>byte</td></tr> <tr><td>C</td> <td>char</td></tr> <tr><td>S</td> <td>short</td></tr> <tr><td>I</td> <td>int</td></tr> <tr><td>J</td> <td>long</td></tr> <tr><td>F</td> <td>float</td></tr> <tr><td>D</td> <td>double</td></tr> <tr><td>L fully-qualified-class ;</td> <td>全限定名类</td></tr> <tr><td>[ type</td> <td>type[]。数组</td></tr> <tr><td>( arg-types ) ret-type</td> <td>方法类型</td></tr></tbody></table></li> <li><p>如对于以下Java方法</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">long</span> <span class="token function">f</span><span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span><span class="token class-name">String</span> s<span class="token punctuation">,</span><span class="token keyword">int</span><span class="token punctuation">[</span><span class="token punctuation">]</span> arr<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre></div></li> <li><p>其对应的类型签名为</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token punctuation">(</span><span class="token class-name">ILjava</span><span class="token operator">/</span>lang<span class="token operator">/</span><span class="token class-name">String</span><span class="token punctuation">;</span><span class="token punctuation">[</span><span class="token class-name">I</span><span class="token punctuation">)</span><span class="token class-name">J</span>
+</code></pre></div></li></ul> <h3 id="修改的utf-8字符串"><a href="#修改的utf-8字符串" class="header-anchor">#</a> 修改的UTF-8字符串</h3> <ul><li>JNI使用修改后的UTF-8字符串来表示各种字符串类型。修改后的UTF-8字符串与Java VM使用的字符串相同。修改后的UTF-8字符串会被编码，以至于仅包含非空ASCII字符的字符序列能用每个字符一个字节的方式表示，但所有的Unicode字符也能表示（可理解为变长编码）</li> <li>在<code>\u0001</code>到<code>\u007F</code>范围内的字符都使用单个字节表示，如<code>0xxxxxxx</code>。其中7位的值用于表示字符</li> <li>null字符(<code>\u0000</code>)和在<code>\u0080</code>到<code>\u07ff</code>的字符被一对字节x和y表示。如<code>x:110xxxxx y:10yyyyyy</code>。通过表达式<code>((x &amp; 0x1f)&lt;&lt;16)+(y &amp; 0x3f)</code>计算得到的值表示字符</li> <li>范围在<code>\u0800</code>到<code>\uFFFF</code>的字符使用3个单字节x、y、z表示。如<code>x:1110xxxx y:10yyyyyy z:10zzzzzz</code>。通过表达式<code>((x &amp; 0xf) &lt;&lt; 12) + ((y &amp; 0x3f) &lt;&lt; 6) + (z &amp; 0x3f)</code>计算的结果表示字符</li> <li>多字节字符的字节被存在<code>class</code>文件中，按大端方式存储</li> <li>与标准UTF-8格式的两点不同：
+<ul><li>空字符<code>(char)0</code>使用双字节格式而不是单字节格式进行编码,这意味着修改后的UTF-8字符串永远不会嵌入空值</li> <li>只使用标准UTF-8的1字节、2字节和3字节格式;JVM不识别标准UTF-8的四字节格式;它使用自己的两倍三字节格式</li></ul></li></ul> <h2 id="jni函数"><a href="#jni函数" class="header-anchor">#</a> JNI函数</h2> <ul><li>所有的JNI函数都必须接收非空对象，保证传递给JNI函数的对象非空是开发者的职责。在保证非空后，JNI函数中因此不需要再进行非空检查</li></ul> <h3 id="接口函数表"><a href="#接口函数表" class="header-anchor">#</a> 接口函数表</h3> <ul><li><p>每个函数都可用相对于<code>JNIEnv</code>参数的一个固定偏移量来访问到。<code>JNIEnv</code>类型是一个指向存储所有JNI函数指针的结构体的指针，其定义为：</p> <div class="language-c++ extra-class"><pre class="language-text"><code>typedef const struct JNINativeInterface *JNIEnv;
+</code></pre></div></li> <li><p>VM按以下代码初始化接口函数表，其中有些值为NULL的入口是预留为后续兼容COM或进行Class操作的扩展</p> <div class="language-c++ extra-class"><pre class="language-text"><code>const struct JNINativeInterface ...={
+    NULL,
+    NULL,
+    NULL,
+    NULL,
+    GetVersion,
+    
+    DefineClass,
+    FindClass,
+    
+    .....
+}
+</code></pre></div></li></ul> <h3 id="版本信息"><a href="#版本信息" class="header-anchor">#</a> 版本信息</h3> <ul><li><p>相关JNI函数</p> <table><thead><tr><th>函数</th> <th>作用</th> <th>在接口函数表中的下标</th></tr></thead> <tbody><tr><td>jint GetVersion(JNIEnv* env)</td> <td>返回本地方法接口的版本。返回int，高16位存储主版本号，低16位存次版本号。如JDK/JRE 1.1，则返回 0x00010001</td> <td>4</td></tr></tbody></table></li></ul> <h3 id="类操作"><a href="#类操作" class="header-anchor">#</a> 类操作</h3> <ul><li><p>相关JNI函数</p> <table><thead><tr><th>函数</th> <th>作用</th> <th>在接口函数表中的下标</th></tr></thead> <tbody><tr><td>jclass DefineClass(JNIEnv* env,const char* name,jobject loader,const jbyte* buf,jsize bufLen);</td> <td>从装有原始类数据(.class文件)的缓冲区buf中加载类。在此函数返回后，buf不再被VM引用</td> <td>5</td></tr> <tr><td>jclass FindClass(JNIEnv* env,const char* name);</td> <td>查找并加载类.name为全限定类名</td> <td>6</td></tr> <tr><td>jclass GetSuperclass(JNIEnv* env,jclass clazz);</td> <td>获取clazz的超类。若clazz是除了Object类以外的类，则返回其超类；若clazz为Object类或clazz为接口，则函数返回NULL</td> <td>10</td></tr> <tr><td>jboolean IsAssignableFrom(JNIEnv* env,jclass clazz1,jclass clazz2);</td> <td>判断clazz1的对象是否能安全转换为clazz2的对象</td> <td>11</td></tr></tbody></table></li></ul> <h2 id="vs2019-idea下jni项目整合"><a href="#vs2019-idea下jni项目整合" class="header-anchor">#</a> VS2019+IDEA下JNI项目整合</h2> <ul><li><p>在Java端编写代码</p> <div class="language-java extra-class"><pre class="language-java"><code><span class="token keyword">package</span> <span class="token namespace">com<span class="token punctuation">.</span>xiao</span><span class="token punctuation">;</span>
+
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">JNITest</span> <span class="token punctuation">{</span>
+    <span class="token keyword">static</span> <span class="token punctuation">{</span>
+        <span class="token class-name">System</span><span class="token punctuation">.</span><span class="token function">loadLibrary</span><span class="token punctuation">(</span><span class="token string">&quot;jni_test&quot;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+    <span class="token keyword">public</span> <span class="token keyword">native</span> <span class="token keyword">void</span> <span class="token function">myKernel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+        <span class="token class-name">JNITest</span> test<span class="token operator">=</span><span class="token keyword">new</span> <span class="token class-name">JNITest</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        test<span class="token punctuation">.</span><span class="token function">myKernel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+</code></pre></div></li> <li><p>使用Java的命令行工具<code>javac -h</code>编译该Java类，生成一个C/C++头文件</p> <div class="language-powershell extra-class"><pre class="language-powershell"><code><span class="token comment"># javac -h 后跟 编译后保存文件的目录名和要编译的类名</span>
+javac <span class="token operator">-</span>h <span class="token punctuation">.</span> JNITest<span class="token punctuation">.</span>java
+</code></pre></div></li> <li><p>编译后得到一个用下划线分割的全类名<code>.h</code>头文件</p> <p><img src="/jni-pic/2.png" alt="2.png"></p></li> <li><p>文件内容大致为</p> <div class="language-c++ extra-class"><pre class="language-text"><code>/* DO NOT EDIT THIS FILE - it is machine generated */
+#include &quot;jni.h&quot;
+/* Header for class com_xiao_JNITest */
+
+#ifndef _Included_com_xiao_JNITest
+#define _Included_com_xiao_JNITest
+#ifdef __cplusplus
+
+extern &quot;C&quot; {                //遵循C的编译规约
+#endif
+/*
+ * Class:     com_xiao_JNITest
+ * Method:    myKernel
+ * Signature: ()V
+ */
+// 以下即为JNI函数的声明
+JNIEXPORT void JNICALL Java_com_xiao_JNITest_myKernel(JNIEnv *, jobject);
+
+#ifdef __cplusplus
+}
+#endif
+#endif
+</code></pre></div></li> <li><p>在VS中创建<strong>动态链接库(dll)项目</strong></p> <p><img src="/jni-pic/3.png" alt="3.png"></p></li> <li><p>新建好项目后，项目中自身带了几个文件。可直接忽略不管，但不能删除</p></li> <li><p>之后向项目中添加以下几个文件：</p> <ul><li>之前用<code>javac -h</code>编译得到的头文件</li> <li>Java安装路径下<code>include</code>目录中的<code>jni.h</code>和<code>include&gt;win32</code>目录中的<code>jni_md.h</code></li> <li>自己新建的用于实现头文件中的函数的<code>.cpp</code>文件（绿色所示）</li></ul> <p><img src="/jni-pic/4.png" alt="4.png"></p></li> <li><p>编写<code>com_xiao_JNITest.h</code>中函数的实现代码<code>jni_impl.cpp</code></p> <div class="language-c++ extra-class"><pre class="language-text"><code>#pragma once
+#include &quot;pch.h&quot;
+#include &quot;com_xiao_JNITest.h&quot;
+#include &lt;iostream&gt;
+
+JNIEXPORT void JNICALL Java_com_xiao_JNITest_myKernel(JNIEnv* env, jobject obj) {
+	std::cout &lt;&lt; &quot;I am from C ++&quot; &lt;&lt; std::endl;
+}
+</code></pre></div></li> <li><p>可更改项目属性，让项目构建为x64 Release</p> <p><img src="/jni-pic/5.png" alt="5.png"></p></li> <li><p>生成解决方案(Ctrl+Shift+B)，在项目的<code>Release</code>文件夹下得到生成的<code>.dll</code>文件</p> <p><img src="/jni-pic/6.png" alt="6.png"></p></li> <li><p>在IDEA中，选择<code>File&gt;Project Structure</code>，在Libraries中添加该<code>.dll</code>文件即可</p> <p><img src="/jni-pic/7.png" alt="7.png"></p></li> <li><p>运行....</p> <p><img src="/jni-pic/8.png" alt="8.png"></p></li></ul></div> <footer class="page-edit"><!----> <!----></footer> <!----> </main></div><div class="global-ui"></div></div>
+    <script src="/assets/js/app.80bf8062.js" defer></script><script src="/assets/js/2.0c4bddf9.js" defer></script><script src="/assets/js/1.50b457b8.js" defer></script><script src="/assets/js/27.e117ae25.js" defer></script>
+  </body>
+</html>
